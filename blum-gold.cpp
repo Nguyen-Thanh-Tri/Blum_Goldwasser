@@ -44,14 +44,29 @@ bool isPrime(int x)
     }
     return false;
 }
-
+bool isBinary(const string &str)
+{
+    for (char c : str)
+    {
+        if (c != '0' && c != '1')
+            return false;
+    }
+    return true;
+}
 void strtobit(string m, string *m1)
 {
-    string a = "";
-    for (char c : m)
+    if (isBinary(m))
     {
-        bitset<8> bits(c);
-        *m1 += bits.to_string();
+        *m1 = m; // Input is already a binary string
+    }
+    else
+    {
+        string a = "";
+        for (char c : m)
+        {
+            bitset<8> bits(c);
+            *m1 += bits.to_string();
+        }
     }
 }
 
